@@ -1,10 +1,10 @@
-import React, {useCallback, useRef} from 'react';
+import React, {useCallback, useRef, useEffect} from 'react';
 import {Box} from '@mui/material';
 import {VariableSizeList as List} from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import MessageItem from '../MessageItem/MessageItem';
 import {Message} from "@/app/actions/actions";
 import styles from './MessageList.module.css';
+import MessageItem from "@/app/components/MessageItem/MessageItem";
 
 interface MessageListProps {
     messages: Message[];
@@ -17,9 +17,8 @@ export default function MessageList({messages, darkMode}: MessageListProps) {
     const bottomPadding = 90;
 
     const getItemSize = useCallback((index: number) => {
-        const baseHeight = itemHeights.current[index] || 80;
-        return index === messages.length - 1 ? baseHeight + bottomPadding : baseHeight;
-    }, [messages.length]);
+        return itemHeights.current[index] || 80;
+    }, []);
 
     const setItemSize = useCallback((index: number, size: number) => {
         if (itemHeights.current[index] !== size) {
@@ -44,11 +43,20 @@ export default function MessageList({messages, darkMode}: MessageListProps) {
                     }}
                     darkMode={darkMode}
                     onHeightCalculated={(height: number) => setItemSize(index, height)}
+                    style={{
+                        paddingBottom: isLastItem ? bottomPadding : 0,
+                    }}
                 />
-                {isLastItem && <div style={{height: bottomPadding}}/>}
             </div>
         );
     };
+
+    // Scroll to the last item when messages change
+    useEffect(() => {
+        if (listRef.current) {
+            listRef.current.scrollToItem(messages.length - 1, 'end');
+        }
+    }, [messages]);
 
     return (
         <Box className={styles.container}>

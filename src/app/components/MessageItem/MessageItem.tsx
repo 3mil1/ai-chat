@@ -9,9 +9,10 @@ interface MessageProps {
     };
     darkMode?: boolean;
     onHeightCalculated: (height: number) => void;
+    style?: React.CSSProperties;
 }
 
-export default function MessageItem({message, darkMode, onHeightCalculated}: MessageProps) {
+export default function MessageItem({message, darkMode, onHeightCalculated, style}: MessageProps) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -26,6 +27,7 @@ export default function MessageItem({message, darkMode, onHeightCalculated}: Mes
     return (
         <div
             ref={containerRef}
+            style={style}
             className={`${styles.container} ${containerClass}`}
         >
             <div className={contentClass}>
