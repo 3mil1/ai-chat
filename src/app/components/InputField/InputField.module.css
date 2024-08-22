@@ -10,6 +10,7 @@
     border-top-left-radius: 16px;
     border-top-right-radius: 16px;
     background-color: #ffffff;
+    z-index: 1000;
 }
 
 .container.dark {

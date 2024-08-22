@@ -1,9 +1,9 @@
-import React, { useCallback, useRef } from 'react';
-import { Box } from '@mui/material';
-import { VariableSizeList as List } from 'react-window';
+import React, {useCallback, useRef} from 'react';
+import {Box} from '@mui/material';
+import {VariableSizeList as List} from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import MessageItem from '../MessageItem/MessageItem';
-import { Message } from "@/app/actions/actions";
+import {Message} from "@/app/actions/actions";
 import styles from './MessageList.module.css';
 
 interface MessageListProps {
@@ -11,13 +11,15 @@ interface MessageListProps {
     darkMode: boolean;
 }
 
-export default function MessageList({ messages, darkMode }: MessageListProps) {
+export default function MessageList({messages, darkMode}: MessageListProps) {
     const listRef = useRef<List>(null);
     const itemHeights = useRef<number[]>([]);
+    const bottomPadding = 90;
 
     const getItemSize = useCallback((index: number) => {
-        return itemHeights.current[index] || 80; // 80 is a fallback in case height is not yet calculated
-    }, []);
+        const baseHeight = itemHeights.current[index] || 80;
+        return index === messages.length - 1 ? baseHeight + bottomPadding : baseHeight;
+    }, [messages.length]);
 
     const setItemSize = useCallback((index: number, size: number) => {
         if (itemHeights.current[index] !== size) {
@@ -28,8 +30,9 @@ export default function MessageList({ messages, darkMode }: MessageListProps) {
         }
     }, []);
 
-    const Row = ({ index, style }: { index: number; style: React.CSSProperties }) => {
+    const Row = ({index, style}: { index: number; style: React.CSSProperties }) => {
         const message = messages[index];
+        const isLastItem = index === messages.length - 1;
 
         return (
             <div style={style}>
@@ -42,6 +45,7 @@ export default function MessageList({ messages, darkMode }: MessageListProps) {
                     darkMode={darkMode}
                     onHeightCalculated={(height: number) => setItemSize(index, height)}
                 />
+                {isLastItem && <div style={{height: bottomPadding}}/>}
             </div>
         );
     };
@@ -49,7 +53,7 @@ export default function MessageList({ messages, darkMode }: MessageListProps) {
     return (
         <Box className={styles.container}>
             <AutoSizer>
-                {({ height, width }) => (
+                {({height, width}) => (
                     <List
                         ref={listRef}
                         height={height}

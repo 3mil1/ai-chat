@@ -1,13 +1,9 @@
 .container {
     display: flex;
     flex-direction: column;
-    height: 90vh;
-}
-
-@media screen and (max-width: 768px) and (hover: none) and (pointer: coarse) and (-webkit-min-device-pixel-ratio: 0) {
-    .container {
-        height: 80vh;
-    }
+    height: 100vh;
+    flex-grow: 1;
+    overflow-y: auto;
 }
 
 .light {

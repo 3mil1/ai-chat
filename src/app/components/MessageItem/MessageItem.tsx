@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Typography } from '@mui/material';
+import React, {useEffect, useRef} from 'react';
+import {Typography} from '@mui/material';
 import styles from './MessageItem.module.css';
 
 interface MessageProps {
@@ -11,7 +11,7 @@ interface MessageProps {
     onHeightCalculated: (height: number) => void;
 }
 
-export default function MessageItem({ message, darkMode = false, onHeightCalculated }: MessageProps) {
+export default function MessageItem({message, darkMode, onHeightCalculated}: MessageProps) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -24,7 +24,10 @@ export default function MessageItem({ message, darkMode = false, onHeightCalcula
     const contentClass = `${styles.messageContent} ${darkMode ? styles.dark : ''}`;
 
     return (
-        <div ref={containerRef} className={`${styles.container} ${containerClass}`}>
+        <div
+            ref={containerRef}
+            className={`${styles.container} ${containerClass}`}
+        >
             <div className={contentClass}>
                 <Typography variant="body1">{message.text}</Typography>
             </div>
