@@ -1,0 +1,74 @@
+.header {
+    background-color: #F8FAFC;
+}
+
+.header.dark {
+    background-color: #1E293B;
+}
+
+.toolbar {
+    padding: 0 16px !important;
+    min-height: 56px;
+}
+
+.title {
+    flex-grow: 1;
+}
+
+.title.light {
+    color: #111827;
+}
+
+.apiKeyButton {
+    color: #3B82F6;
+    margin-right: 16px;
+}
+
+.themeToggle {
+    width: 80px;
+    height: 40px;
+    border-radius: 20px;
+    padding: 4px;
+    cursor: pointer;
+    position: relative;
+    background: linear-gradient(to right, rgba(246, 211, 101, 0.41), rgba(253, 160, 133, 0.42));
+    margin-right: 16px;
+}
+
+.themeToggle.dark {
+    background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+}
+
+.themeToggleButton {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(243, 156, 18, 0.56);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    transform: translateX(0);
+}
+
+.themeToggleButton.dark {
+    background-color: #818cf8;
+    transform: translateX(40px);
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+    }
+}

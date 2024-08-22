@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    padding-bottom: 16px;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+
+.user {
+    justify-content: flex-end;
+}
+
+.assistant {
+    justify-content: flex-start;
+}
+
+.messageContent {
+    max-width: 80%;
+    padding: 8px 12px;
+    border-radius: 12px;
+}
+
+.user .messageContent {
+    background-color: #F1F5F9;
+    color: #1E293B;
+}
+
+.assistant .messageContent {
+    background-color: #3B82F6;
+    color: #FFFFFF;
+}
+
+.messageContent.dark {
+    background-color: #1E293B;
+    color: #F1F5F9;
+}
+
+.assistant .messageContent.dark {
+    background-color: #334155;
+    color: #F1F5F9;
+}

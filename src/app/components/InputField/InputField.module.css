@@ -1,0 +1,77 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 800px;
+    padding: 16px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    background-color: #ffffff;
+}
+
+.container.dark {
+    background-color: #1e293b;
+}
+
+.wrapper {
+    position: relative;
+    padding-right: 40px;
+}
+
+.input {
+    border-radius: 12px;
+    background-color: #f1f5f9;
+}
+
+.input.dark {
+    background-color: #334155;
+}
+
+.input :global(.MuiOutlinedInput-root) {
+    padding: 0;
+}
+
+.input :global(.MuiOutlinedInput-notchedOutline) {
+    border: none;
+}
+
+.input :global(.MuiInputBase-input) {
+    padding: 12px 16px;
+    overflow-y: auto;
+    color: #0f172a;
+}
+
+.input.dark :global(.MuiInputBase-input) {
+    color: #d1d5db;
+}
+
+.input :global(.MuiInputBase-input::-webkit-scrollbar) {
+    width: 6px;
+}
+
+.input :global(.MuiInputBase-input::-webkit-scrollbar-track) {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.input :global(.MuiInputBase-input::-webkit-scrollbar-thumb) {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.input :global(.MuiInputBase-input::-webkit-scrollbar-thumb:hover) {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.sendButton {
+    position: absolute;
+    right: 4px;
+    bottom: 3px;
+    color: #3B82F6;
+}
+
+.sendButton.dark {
+    color: #60A5FA;
+}

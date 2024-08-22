@@ -1,0 +1,52 @@
+.dialogPaper {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+}
+
+.dialogTitle {
+    text-align: center;
+    padding-bottom: 8px;
+}
+
+.contentBox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    margin-top: 8px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+}
+
+.textField {
+    flex-grow: 1;
+}
+
+.textField :global(.MuiOutlinedInput-root) {
+    border-radius: 8px;
+}
+
+.dialogActions {
+    padding: 0 24px 20px 24px;
+}
+
+.cancelButton {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.cancelButton:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.saveButton {
+    background-color: #3B82F6;
+    color: white;
+}
+
+.saveButton:hover {
+    background-color: #2563EB;
+}
