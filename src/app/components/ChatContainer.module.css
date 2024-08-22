@@ -1,7 +1,7 @@
 .container {
     display: flex;
     flex-direction: column;
-    min-height: 100dvh;
+    min-height: calc(100vh - env(safe-area-inset-bottom));
     flex-grow: 1;
 }
 
